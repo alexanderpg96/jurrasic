@@ -10,6 +10,6 @@ urlpatterns = [
     path("category/<uuid:pk>/", views.CategoryView.as_view()),
     path("payment/", views.PaymentListCreateView.as_view()),
     path("payment/<uuid:pk>/", views.PaymentView.as_view()),
-    path("category_forecast/", views.CategoryForecastListCreateView.as_view()),
+    path("category_forecast/", views.CategoryForecastApiView.as_view()),
     path("category_forecast/<uuid:pk>/", views.CategoryForecastView.as_view()),
 ]

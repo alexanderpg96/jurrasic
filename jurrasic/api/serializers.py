@@ -27,6 +27,18 @@ class CategoryForecastSerializer(serializers.ModelSerializer):
         model = models.CategoryForecast
         fields = "__all__"
 
+    def to_representation(self, instance):
+        """Modify the response json to represent category objects (instead of just their uuid's).
+
+        Args:
+            instance (CategoryForecaseSerializer): CategoryForecaseSerializer instance
+
+        Returns:
+            CategoryForecaseSerializer: Updated serializer representation
+        """
+        self.fields["category"] = CategorySerializer(read_only=True)
+        return super(CategoryForecastSerializer, self).to_representation(instance)
+
 
 class ExpenseSerializer(serializers.ModelSerializer):
     """Serializer for the expense object in the database."""
