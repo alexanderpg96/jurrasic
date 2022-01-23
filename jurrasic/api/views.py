@@ -1,5 +1,4 @@
 """Views module for all endpoints in API."""
-
 import uuid
 from django.db.models import Sum
 from django.forms.models import model_to_dict
@@ -125,7 +124,9 @@ class CategoryForecastApiView(APIView):
 
             forecasts.append(
                 {
-                    "category": forecast.category.name,
+                    "id": forecast.id,
+                    "category_id": forecast.category.id,
+                    "category_name": forecast.category.name,
                     "forecast": forecast.ammount,
                     "expenses": expenses.filter(
                         category=forecast.category.id
