@@ -120,7 +120,6 @@ class CategoryForecastApiView(APIView):
         forecasts = []
 
         for forecast in category_forecasts:
-            print(expenses.filter(category=forecast.category))
 
             forecasts.append(
                 {
@@ -141,7 +140,6 @@ class CategoryForecastApiView(APIView):
 
         if serializer.is_valid():
             serializer.save()
-            print(serializer.validated_data)
             validated_data = serializer.validated_data
             validated_data["category"] = model_to_dict(validated_data["category"])
             return Response(status=status.HTTP_201_CREATED, data=validated_data)
